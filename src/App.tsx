@@ -1,6 +1,8 @@
 import { defineComponent } from "vue";
-import styled from "vue3-styled-components";
+import styled, { ThemeProvider } from "vue3-styled-components";
 import Example from "./components/Example";
+
+const theme = {};
 
 const Wrapper = styled.div`
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -15,9 +17,11 @@ export default defineComponent({
   name: "App",
   render() {
     return (
-      <Wrapper>
-        <Example msg="Vite + Vue + Tsx + Styled Components example" />
-      </Wrapper>
+      <ThemeProvider theme={theme}>
+        <Wrapper>
+          <Example msg="Vite + Vue + Tsx + Styled Components example" />
+        </Wrapper>
+      </ThemeProvider>
     );
   },
 });
