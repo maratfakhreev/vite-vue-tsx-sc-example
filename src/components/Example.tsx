@@ -1,6 +1,8 @@
 import { defineComponent } from "vue";
 import styled from "vue3-styled-components";
 import img from "../assets/logo.png";
+import Draggable from "vuedraggable";
+import Test from "./Test";
 
 const Wrapper = styled.div`
   a {
@@ -14,7 +16,14 @@ export default defineComponent({
     msg: { type: String, required: true },
   },
   data() {
-    return { count: 1 };
+    return {
+      count: 1,
+      values: [
+        { id: 1, value: "zzzz" },
+        { id: 2, value: "aaaa" },
+        { id: 3, value: "Kitty" },
+      ],
+    };
   },
   methods: {
     increment() {
@@ -38,6 +47,26 @@ export default defineComponent({
         <button type="button" onClick={this.increment}>
           count is: {this.count}
         </button>
+        <div>
+          <Draggable
+            list={this.values}
+            itemKey="id"
+            v-slots={{
+              item: ({ element }) => {
+                return <div>{element.value}</div>;
+              },
+            }}
+          />
+        </div>
+        <div>
+          <Test
+            v-slots={{
+              header: () => <span>header</span>,
+            }}
+          >
+            <span>DEFAULT</span>
+          </Test>
+        </div>
         <p>
           Edit <code>components/Example.tsx</code> to test hot module
           replacement.
