@@ -3,6 +3,8 @@ import styled from "vue3-styled-components";
 import img from "../assets/logo.png";
 import Draggable from "vuedraggable";
 import Test from "./Test";
+import Datepicker from "vue3-date-time-picker";
+import "vue3-date-time-picker/dist/main.css";
 
 const Wrapper = styled.div`
   a {
@@ -18,6 +20,7 @@ export default defineComponent({
   data() {
     return {
       count: 1,
+      date: new Date(),
       values: [
         { id: 1, value: "zzzz" },
         { id: 2, value: "aaaa" },
@@ -28,6 +31,10 @@ export default defineComponent({
   methods: {
     increment() {
       this.count++;
+    },
+    changeD(v) {
+      console.log(v);
+      this.date = v;
     },
   },
   render() {
@@ -57,6 +64,10 @@ export default defineComponent({
               },
             }}
           />
+        </div>
+        <div>
+          {/* Need to find something as update replacement */}
+          <Datepicker modelValue={this.date} update={this.changeD} />
         </div>
         <div>
           <Test

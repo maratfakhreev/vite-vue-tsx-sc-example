@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "vue": "^3.2.27",
+    "vue3-date-time-picker": "^2.4.4",
     "vue3-styled-components": "^1.2.1",
     "vuedraggable": "^4.1.0"
   },
